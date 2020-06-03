@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+    <!--加载 数据库驱动配置 文件-->
+    <properties resource="database.properties" />
+    <!--
+        驼峰命名 转换
+    -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!--替代 JDBC 连接 数据库 -->
+    <!--自带 数据源-->
+    <!--多数据源配置-->
+    <!--默认development-->
+    <environments default="development">
+        <environment id="development">
+            <!-- 事务 管理-->
+            <transactionManager type="JDBC" />
+            <!-- 数据源 -->
+            <dataSource type="POOLED" >
+                <!-- 配置连接信息 -->
+                <!--连接驱动-->
+                <property name="driver" value="${jdbc.driver}" />
+                <!--url-->
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.user}" />
+                <property name="password" value="${jdbc.password}" />
+
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 将mapper.xml文件加入到配置文件中 -->
+    <!--映射mapper-->
+    <!--
+    mapper 加载 四种方式
+
+    1、resource
+    2、url
+    3、class
+    4、package
+
+
+    加载 的 时候 会 先去 加载 package
+    -->
+    <mappers>
+        <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/userMapperKT.xml"/>
+    </mappers>
+
+</configuration>

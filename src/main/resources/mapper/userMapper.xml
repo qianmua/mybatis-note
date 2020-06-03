@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+命名空间 // 对应 代理 的实体类
+-->
+<!--main-->
+<mapper namespace="pres.qianmuna.mybatis.mapper.UserMapper">
+
+    <!--sql 执行 查询 条件-->
+    <!--resultType 结果类型-->
+    <!--resultMap 结果集 映射-->
+    <select id="count" resultType="int">
+        select count(*) as count from smbms_user;
+
+    </select>
+
+</mapper>

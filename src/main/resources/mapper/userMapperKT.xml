@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+命名空间 // 对应 代理 的实体类
+-->
+<!--main-->
+
+<!--
+数据源 + sql + 操作
+-->
+<!--
+执行语句
+
+select insert update delete
+-->
+
+<!--
+    操作
+
+    连接
+    pst（prepareStatement）
+    结果集映射
+-->
+<mapper namespace="pres.qianmuna.mybatis.mapper.UserMapperKT">
+    <!--sql 执行 查询 条件-->
+    <!--resultMap 结果集 映射-->
+    <!--parameterType 参数-->
+    <!--resultType 结果类型-->
+    <!--
+     注意 resultType 是 要返回的 结果映射的类型
+     不是 返回的结果集类型
+     eg: 我这里是 List<Map>
+     结果集 类型是 List
+     结果类型 是map
+     注意 不然 会报奇奇怪怪的错误~~~
+    -->
+    <select id="queryById" resultType="Map">
+        select
+            id, proCode, proName, proDesc, proContact,
+            proPhone, proAddress, proFax,
+            createdBy, creationDate, modifyDate, modifyBy
+        from smbms_provider
+        <!-- #与 $ 区别-->
+        where id = #{id}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) as count from smbms_user;
+
+    </select>
+
+</mapper>
